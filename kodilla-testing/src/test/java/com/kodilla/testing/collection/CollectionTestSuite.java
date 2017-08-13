@@ -23,19 +23,28 @@ public class CollectionTestSuite {
 
     @Test
     public void testOddNumbersExterminatorEmptyList() {
-        OddNumbersExterminator obj = new OddNumbersExterminator();
-
-        ArrayList<Integer> list = new ArrayList<>();
-        ArrayList<Integer> exterminatedList = obj.exterminate(list);
+        //Given
         ArrayList<Integer> correctEmptyList = new ArrayList<>();
 
+        //When
+        OddNumbersExterminator obj = new OddNumbersExterminator();
+        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> exterminatedList = obj.exterminate(list);
+
+        //Then
         Assert.assertEquals(correctEmptyList, exterminatedList);
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
-        OddNumbersExterminator obj = new OddNumbersExterminator();
+        //Given
+        ArrayList<Integer> correctList = new ArrayList<>();
+        correctList.add(2);
+        correctList.add(4);
+        correctList.add(6);
 
+        //When
+        OddNumbersExterminator obj = new OddNumbersExterminator();
         ArrayList<Integer> list = new ArrayList<>();
         list.add(1);
         list.add(2);
@@ -43,15 +52,9 @@ public class CollectionTestSuite {
         list.add(4);
         list.add(5);
         list.add(6);
-
-        ArrayList<Integer> correctList = new ArrayList<>();
-        correctList.add(2);
-        correctList.add(4);
-        correctList.add(6);
-
         ArrayList<Integer> exterminatedList = obj.exterminate(list);
+
+        //Then
         Assert.assertEquals(correctList, exterminatedList);
     }
-
-
 }
