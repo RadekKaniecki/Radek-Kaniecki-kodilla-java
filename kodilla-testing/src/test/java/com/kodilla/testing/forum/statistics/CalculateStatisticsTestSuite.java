@@ -45,7 +45,7 @@ public class CalculateStatisticsTestSuite {
         //When
         double averagePostsPerUser = calculate.getAveragePostsPerUser();
         double averageCommentsPerUser = calculate.getAverageCommentsPerUser();
-        double averageCommentsPerPost = 0;
+        double averageCommentsPerPost = calculate.getAverageCommentsPerPost();
 
         //Then
         Assert.assertEquals(0, averagePostsPerUser, 0.001);
@@ -197,8 +197,8 @@ public class CalculateStatisticsTestSuite {
         calculate.calculateAdvStatistics(statisticsMock);
 
         //When
-        double averagePostsPerUser = 0;
-        double averageCommentsPerUser = 0;
+        double averagePostsPerUser = calculate.getAveragePostsPerUser();
+        double averageCommentsPerUser = calculate.getAverageCommentsPerUser();
         double averageCommentsPerPost = calculate.getAverageCommentsPerPost();
 
         //Then
