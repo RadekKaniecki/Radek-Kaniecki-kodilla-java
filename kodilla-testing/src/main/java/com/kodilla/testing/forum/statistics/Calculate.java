@@ -18,9 +18,9 @@ public class Calculate {
         this.postsAmount = statistics.postsCount();
         this.commentsAmount = statistics.commentsCount();
 
-        this.averagePostsPerUser = postsAmount / usersAmount;
-        this.averageCommentsPerUser = commentsAmount / usersAmount;
-        this.averageCommentsPerPost = commentsAmount / postsAmount;
+        this.averagePostsPerUser = (double) postsAmount / usersAmount;
+        this.averageCommentsPerUser = (double) commentsAmount / usersAmount;
+        this.averageCommentsPerPost = (double) commentsAmount / postsAmount;
     }
 
     public double getAveragePostsPerUser() {
