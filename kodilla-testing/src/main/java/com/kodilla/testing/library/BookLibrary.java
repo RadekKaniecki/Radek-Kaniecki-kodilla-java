@@ -34,4 +34,12 @@ public class BookLibrary {
         return bookList;
     }
 
+    public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
+        if(libraryUser != null) {
+            List<Book> userBookList = libraryDatabase.listBooksInHandsOf(libraryUser);
+            return userBookList;
+        }
+        return null;
+    }
+
 }
