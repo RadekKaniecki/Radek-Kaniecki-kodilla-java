@@ -150,16 +150,10 @@ public class BoardTestSuite {
         Board project = prepareTestData();
 
         //When
-        List<TaskList> inProgressTasks = new ArrayList<>();
-        inProgressTasks.add(new TaskList("In progress"));
-        long amountOfTasks = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
+        double averageDays = project.getTaskLists().stream()
+                .filter(x -> x.getName().equals("In progress"))
                 .flatMap(tl -> tl.getTasks().stream())
-                .count();
-
-
-        List<LocalDateTime> dates = new ArrayList<>();
-        double averageDays = dates.stream()
+                .map(t -> t.getCreated())
                 .map(t -> t.until(LocalDate.now(), ChronoUnit.DAYS))
                 .mapToLong(Long::longValue)
                 .average()
