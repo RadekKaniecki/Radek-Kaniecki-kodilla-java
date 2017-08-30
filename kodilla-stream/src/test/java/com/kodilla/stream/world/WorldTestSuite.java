@@ -4,49 +4,41 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class WorldTestSuite {
     @Test
     public void testGetPeopleQuantity() {
         //Given
         World world = new World();
-        Continent continentMock = mock(Continent.class);
-        Country countryMock = mock(Country.class);
 
-        List<Country> continent1 = new ArrayList<>();
-        continent1.add(countryMock);
-        continent1.add(countryMock);
-        continent1.add(countryMock);
-        continent1.add(countryMock);
+        //Creating countries
+        Country poland = new Country(new BigDecimal("38000000"));
+        Country germany = new Country(new BigDecimal("82000000"));
+        Country spain = new Country(new BigDecimal("46000000"));
+        Country brasil = new Country(new BigDecimal("207000000"));
+        Country argentina = new Country(new BigDecimal("43000000"));
+        Country peru = new Country(new BigDecimal("32000000"));
 
-        List<Country> continent2 = new ArrayList<>();
-        continent2.add(countryMock);
-        continent2.add(countryMock);
-        continent2.add(countryMock);
-        continent2.add(countryMock);
+        //Creating continents
+        Continent europe = new Continent();
+        Continent southAmerica = new Continent();
 
-        List<Country> continent3 = new ArrayList<>();
-        continent3.add(countryMock);
-        continent3.add(countryMock);
-        continent3.add(countryMock);
-        continent3.add(countryMock);
+        //Adding countries to continents
+        europe.addCountry(poland);
+        europe.addCountry(germany);
+        europe.addCountry(spain);
+        southAmerica.addCountry(brasil);
+        southAmerica.addCountry(argentina);
+        southAmerica.addCountry(peru);
 
-        BigDecimal peopleAmount = new BigDecimal("100000000");
-
-        when(continentMock.getCountries()).thenReturn(continent1);
-        when(continentMock.getCountries()).thenReturn(continent2);
-        when(continentMock.getCountries()).thenReturn(continent3);
-        when(countryMock.getPeopleQuantity()).thenReturn(peopleAmount);
+        //Adding continents to world
+        world.addContient(europe);
+        world.addContient(southAmerica);
 
         //When
         BigDecimal totalPeopleAmount = world.getPeopleQuantity();
 
         //Then
-        Assert.assertEquals(1200000000, totalPeopleAmount);
+        Assert.assertEquals(new BigDecimal("448000000"), totalPeopleAmount);
     }
 }
