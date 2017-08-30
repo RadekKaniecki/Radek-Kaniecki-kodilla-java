@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.mockito.BDDMockito;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
@@ -156,16 +157,15 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .count();
 
-        long sumOfDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> t.getCreated())
-                .map(t -> t.until(LocalDate.now(), ChronoUnit.DAYS))
-                .reduce(0L, (sum, current) -> sum = sum + sum.longValue());
 
-        double average = (double) sumOfDays / amountOfTasks;
+        List<LocalDateTime> dates = new ArrayList<>();
+        double averageDays = dates.stream()
+                .map(t -> t.until(LocalDate.now(), ChronoUnit.DAYS))
+                .mapToLong(Long::longValue)
+                .average()
+                .orElse(0);
 
         //Then
-        Assert.assertEquals(10.0, average, 0.01);
+        Assert.assertEquals(10.0, averageDays, 0.01);
     }
 }
