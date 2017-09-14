@@ -12,5 +12,15 @@ public class Board {
     @Autowired
     private TaskList doneList;
 
+    public TaskList getToDoList() {
+        return toDoList;
+    }
 
+    public TaskList getInProgressList() {
+        return inProgressList;
+    }
+
+    public TaskList getDoneList() {
+        return doneList;
+    }
 }
