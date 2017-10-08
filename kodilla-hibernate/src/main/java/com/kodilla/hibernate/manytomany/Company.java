@@ -7,7 +7,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompanyNameWithSpecificLetters",
-        query = "SELECT * FROM companies WHERE company_name LIKE :LETTERS%"
+        query = "SELECT * FROM companies WHERE company_name LIKE :LETTERS"
 )
 
 @Entity

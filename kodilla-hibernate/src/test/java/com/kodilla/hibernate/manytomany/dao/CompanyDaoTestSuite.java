@@ -91,16 +91,17 @@ public class CompanyDaoTestSuite {
         lindaKovalsky.getCompanies().add(greyMatter);
 
         //When
+        employeeDao.save(johnSmith);
+        companyDao.save(softwareMachine);
         List<Employee> employeeName = employeeDao.retrieveEmployeesWithSpecificName("Smith");
-        List<Company> companyName = companyDao.retrieveCompanyNameWithSpecificLetters("Sof");
+        List<Company> companyName = companyDao.retrieveCompanyNameWithSpecificLetters("Sof%");
 
         //Then
         Assert.assertEquals(1, employeeName.size());
         Assert.assertEquals(1, companyName.size());
 
         //CleanUp
-        companyDao.deleteAll();
-        employeeDao.deleteAll();
-
+        employeeDao.delete(johnSmith);
+        companyDao.delete(softwareMachine);
     }
 }
