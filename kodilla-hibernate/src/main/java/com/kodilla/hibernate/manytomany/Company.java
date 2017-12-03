@@ -9,6 +9,10 @@ import java.util.List;
         name = "Company.retrieveCompanyNameWithSpecificLetters",
         query = "SELECT * FROM companies WHERE company_name LIKE :LETTERS"
 )
+@NamedQuery(
+        name = "Company.retrieveCompanyNameWithAnyLetter",
+        query = "FROM Company WHERE name LIKE :LETTERS"
+)
 
 @Entity
 @Table(name = "COMPANIES")

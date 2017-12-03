@@ -10,4 +10,7 @@ import java.util.List;
 public interface CompanyDao extends CrudRepository<Company, Integer> {
     @Query
     List<Company> retrieveCompanyNameWithSpecificLetters(@Param("LETTERS") String letters);
+
+    @Query
+    List<Company> retrieveCompanyNameWithAnyLetter(@Param("LETTERS") String letters);
 }
